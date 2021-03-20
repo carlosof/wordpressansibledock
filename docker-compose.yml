@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  mysql:
+    container_name: mysql
+    build: 
+      context: ./ubuntu
+      dockerfile: ./Dockerfile
+    environment: 
+      - USUARIO=carlos
+      - PASSWD=admin1234
+    networks: 
+      networdpress:
+          ipv4_address: 10.10.10.2 
+  wordpress:
+    container_name: wordpress
+    build: 
+      context: ./ubuntu
+      dockerfile: ./Dockerfile
+    environment: 
+      - USUARIO=carlos
+      - PASSWD=admin1234
+    networks: 
+      networdpress:
+          ipv4_address: 10.10.10.3 
+networks:
+  networdpress:
+      ipam: 
+          driver: default
+          config: 
+              - subnet: 10.10.10.0/24
+
