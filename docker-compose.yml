@@ -16,6 +16,8 @@ services:
     build: 
       context: ./ubuntu
       dockerfile: ./Dockerfile
+    ports:
+      - "8065:80"
     environment: 
       - USUARIO=carlos
       - PASSWD=admin1234
